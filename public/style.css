@@ -1,5 +1,12 @@
+
+
 body {
     background-color: goldenrod;
     text-align: center;
     color: brown;
 }
+
+li {
+    list-style: none;
+}
+
