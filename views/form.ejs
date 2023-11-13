@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') %>
+
+    <main class="container w-50 ">
+        <h1>Form</h1>
+
+        <form class="d-flex justify-content-start flex-column" action="/form" method="post">
+            <div class="mb-6">
+                <label for="title">Book Title</label>
+                <input type="text" class="form-control" id="inputTitle" name="title" />
+                <label for="authorID">Author id</label>
+                <input type="text" class="form-control" id="inputAuthorID" name="authorID" />
+                <label for="rating">Rate</label>
+                <input type="text" class="form-control" id="inputrating" name="rating" />
+                <label for="review">Review</label>
+                <textarea name="review" rows="5" cols="50" id="inputReview" class="form-control">Write something here</textarea>
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="inputcategory" name="category" />
+                <label for="openid">Openid</label>
+                <input type="text" class="form-control" id="inputopenid" name="openid" />
+                <label for="year">Year</label>
+                <input type="number" class="form-control" id="inputyear" name="year" />
+            </div>
+
+            <button type="submit" class="btn btn-danger mt-2 w-25">Enviar</button>
+        </form>
+
+    </main>
+
+    <%- include('partials/footer.ejs') %>

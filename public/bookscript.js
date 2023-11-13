@@ -3,8 +3,6 @@ const rating = document.getElementById('rating');
 
 let level = rating.dataset.id;
 
-console.log(rating.dataset.id);
-
 rating.classList.add('fa-solid')
 
 for (let i = 0; i < level; i++) {
