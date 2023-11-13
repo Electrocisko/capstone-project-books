@@ -29,3 +29,9 @@ img {
     border-radius: 15px;
 }
 
+.book-card-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

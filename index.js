@@ -25,9 +25,15 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get('/book/:id',(req,res) => {
+app.get('/book/:id', async (req,res) => {
   const bookid = req.params.id;
-res.render('book.ejs')
+  let queryText = `SELECT *
+  FROM book
+  WHERE id = ${bookid};`
+  const data = await db.query(queryText);
+  const book = data.rows[0];
+
+return res.render('book.ejs', {book})
 })
 
 app.listen(PORT, () => {
