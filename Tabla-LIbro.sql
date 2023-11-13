@@ -6,7 +6,7 @@ CREATE TABLE book (
     review  TEXT,
 	cover VARCHAR(200),
 	category VARCHAR(30),
-	isbn VARCHAR(20),
-	publication_date DATE,
+	openid VARCHAR(20),
+	year int,
 	FOREIGN KEY (authorID) REFERENCES author(id)
 );
