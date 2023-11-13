@@ -1,0 +1,12 @@
+CREATE TABLE Hoja1(Title VARCHAR(10),authorId VARCHAR(10),rating DOUBLE,review VARCHAR(10),category VARCHAR(10),OL VARCHAR(10),publication DOUBLE,cover VARCHAR(10));
+INSERT INTO Hoja1 (Title,authorId,rating,review,category,OL,publication,cover) VALUES 
+('It Ends With Us','Colleen Hoover',4,'','drama','OL27213498M',2016,'https://covers.openlibrary.org/b/olid/OL27213498M-M.jpg'),
+('The 48 laws of power','Robert Green',2,'','drama','OL25418275M',1998,'https://covers.openlibrary.org/b/olid/OL25418275M-M.jpg'),
+('Um casamento arranjado','Zana Kheiron',5,'','romance','OL47766650M',2019,'https://covers.openlibrary.org/b/id/14321120-M.jpg'),
+('It Starts With Us','Colleen Hoover',3,'','romance','OL37050436M',2022,'https://covers.openlibrary.org/b/id/12749873-M.jpg'),
+('Latidos Que No Dije','Roos',5,'','romance','OL39749923M',2022,'https://covers.openlibrary.org/b/id/13161561-M.jpg'),
+('It','Stephen King',3,'','horror','OL2550667M',1986,'https://covers.openlibrary.org/b/olid/OL9064160M-M.jpg'),
+('Shatter me','Tahereh Mafi',4,'','drama','OL24917781M',2011,'https://covers.openlibrary.org/b/olid/OL24917781M-M.jpg'),
+('Ugly Love','Colleen Hoover',5,'','drama','OL29191495M',2014,'https://covers.openlibrary.org/b/olid/OL29191495M-M.jpg'),
+('The Shining','Stephen King',2,'','horror','OL10925102M',1977,'https://covers.openlibrary.org/b/olid/OL10925102M-M.jpg'),
+('Deep Work','Cal Newport',0,'','studie','OL26314691M',2016,'https://covers.openlibrary.org/b/olid/OL26314691M-M.jpg');

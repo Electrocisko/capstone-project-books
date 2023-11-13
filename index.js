@@ -25,6 +25,11 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get('/book/:id',(req,res) => {
+  const bookid = req.params.id;
+res.render('book.ejs')
+})
+
 app.listen(PORT, () => {
   console.log(`Server listening http://localhost:${PORT}`);
 });
