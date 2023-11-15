@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
   try {
     const data = await db.query("SELECT * FROM book");
     const books = data.rows;
-    return res.render("index.ejs", { books, sort:"Sort by id" });
+    return res.render("index.ejs", { books, sort: "Sort by id" });
   } catch (error) {
     return res.status(500).json({
       status: "error",
@@ -31,7 +31,7 @@ app.get("/sortbyrating", async (req, res) => {
   ORDER BY rating DESC;`;
     const data = await db.query(queryText);
     const books = data.rows;
-    return res.render("index.ejs", { books, sort:"Sort by rating" });
+    return res.render("index.ejs", { books, sort: "Sort by rating" });
   } catch (error) {
     return res.status(500).json({
       status: "error",
@@ -40,13 +40,13 @@ app.get("/sortbyrating", async (req, res) => {
   }
 });
 
-app.get("/sortbytitle", async(req, res) => {
+app.get("/sortbytitle", async (req, res) => {
   try {
     const queryText = `SELECT * FROM book
   ORDER BY title;`;
     const data = await db.query(queryText);
     const books = data.rows;
-    return res.render("index.ejs", { books,sort:"Sort by title" });
+    return res.render("index.ejs", { books, sort: "Sort by title" });
   } catch (error) {
     return res.status(500).json({
       status: "error",
@@ -61,7 +61,7 @@ app.get("/sortbyyear", async (req, res) => {
   ORDER BY year DESC;`;
     const data = await db.query(queryText);
     const books = data.rows;
-    return res.render("index.ejs", { books, sort:"Sort by year" });
+    return res.render("index.ejs", { books, sort: "Sort by year" });
   } catch (error) {
     return res.status(500).json({
       status: "error",
@@ -85,9 +85,9 @@ app.get("/form", (req, res) => {
   res.render("form.ejs");
 });
 
-app.get('/formauthor',(req,res) => {
-  res.render("author_form.ejs")
-})
+app.get("/formauthor", (req, res) => {
+  res.render("author_form.ejs");
+});
 
 app.post("/form", async (req, res) => {
   try {
@@ -109,15 +109,20 @@ app.post("/form", async (req, res) => {
 
 app.post("/formauthor", async (req, res) => {
   try {
-    const data = req.body;
-
-    const queryText = ``;
-    //await db.query(queryText);
-    //return res.redirect("/");
-    return res.json({
-      message:"Aca viene datos de autor", 
-      data
-    })
+    const { name, lastname, rating, summary } = req.body;
+    //// Validation if the author already exists in the database.
+    let queryText = `SELECT * FROM author
+    WHERE LOWER(name)='${name.toLowerCase()}' AND LOWER(lastname)='${lastname.toLowerCase()}';`;
+    const exist = await db.query(queryText);
+    if (exist.rowCount > 0) {
+      throw new Error("Author already exist");
+    } else {
+      queryText = `INSERT INTO author (name, lastname, ranking, summary)
+      VALUES
+      ('${name}','${lastname}',${rating},'${summary}');`;
+      await db.query(queryText);
+      return res.redirect("/");
+    }
   } catch (error) {
     return res.json({
       status: "error",
