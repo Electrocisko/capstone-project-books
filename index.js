@@ -85,6 +85,10 @@ app.get("/form", (req, res) => {
   res.render("form.ejs");
 });
 
+app.get('/formauthor',(req,res) => {
+  res.render("author_form.ejs")
+})
+
 app.post("/form", async (req, res) => {
   try {
     const data = req.body;
@@ -95,6 +99,25 @@ app.post("/form", async (req, res) => {
    'https://covers.openlibrary.org/b/olid/${data.openid}-M.jpg','${data.category}','${data.openid}','${data.year}');`;
     await db.query(queryText);
     return res.redirect("/");
+  } catch (error) {
+    return res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+app.post("/formauthor", async (req, res) => {
+  try {
+    const data = req.body;
+
+    const queryText = ``;
+    //await db.query(queryText);
+    //return res.redirect("/");
+    return res.json({
+      message:"Aca viene datos de autor", 
+      data
+    })
   } catch (error) {
     return res.json({
       status: "error",

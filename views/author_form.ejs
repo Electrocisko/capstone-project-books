@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+
+    <main class="container w-50 ">
+        <h1>Author Form</h1>
+        <h2>Enter the author's information</h2>
+
+        <form class="d-flex justify-content-start flex-column" action="/formauthor" method="post">
+            <div class="mb-6">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="inputname" name="name" />
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" id="inputlastname" name="lastname" />
+                <label for="rating">Rate</label>
+                <input type="text" class="form-control" id="inputrating" name="rating" />
+                <label for="summary">summary</label>
+                <textarea name="summary" rows="5" cols="50" id="inputsummary" class="form-control">Write something here</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-danger mt-2 w-25">Submit</button>
+        </form>
+
+    </main>
+
+    <%- include('partials/footer.ejs') %>
