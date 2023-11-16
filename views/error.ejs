@@ -1,0 +1,16 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mt-5">
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div>
+         <%= error.message %>
+        </div>
+      </div>
+</div>
+
+<button class="btn btn-danger " id="returnBtn">Return</button>
+
+
+    <script src="errorscript.js"></script>
+  <%- include('partials/footer.ejs') %>

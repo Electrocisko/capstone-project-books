@@ -89,10 +89,28 @@ app.get("/formauthor", (req, res) => {
   res.render("author_form.ejs");
 });
 
+app.get("/error", (req,res) => {
+res.render("error.ejs")
+})
+
 app.post("/form", async (req, res) => {
   try {
     const data = req.body;
-    const queryText = `
+    //Validation if exist the book
+    let queryText = `SELECT * FROM book
+    WHERE LOWER(openid)='${data.openid.toLowerCase()}';`;
+    const exist = await db.query(queryText);
+    if (exist.rowCount > 0) {
+      throw new Error("Book already register with this OL Id");
+    }
+    //Validation is author register
+    queryText = `SELECT * FROM author
+    WHERE  id ='${data.authorID}';`;
+    const author = await db.query(queryText);
+    if (author.rowCount == 0) {
+      throw new Error("Author not register whit this id");
+    }
+    queryText = `
   INSERT INTO book (title,authorid,rating,review,cover,category,openid,year)
   VALUES
   ('${data.title}',${data.authorID},${data.rating},'${data.review}',
@@ -100,10 +118,7 @@ app.post("/form", async (req, res) => {
     await db.query(queryText);
     return res.redirect("/");
   } catch (error) {
-    return res.json({
-      status: "error",
-      message: error.message,
-    });
+    return res.render("error.ejs", {error})
   }
 });
 
